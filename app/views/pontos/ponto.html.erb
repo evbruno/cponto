@@ -1,5 +1,5 @@
 <h1>CPONTO draft</h1>
-<h2><%= @ano %> / <%= @mes %></h2>
+<h2><%= @ano %> / <%=  t('date.month_names')[@mes] %></h2>
 
 <%= link_to('Mês anterior', calcula_ponto_url(@ano_ant, @mes_ant)) %>
 //

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ano:</strong>
+  <%= @ponto.ano %>
+</p>
+
+<p>
+  <strong>Mes:</strong>
+  <%= @ponto.mes %>
+</p>
+
+<p>
+  <strong>Entrada manha:</strong>
+  <%= @ponto.entrada_manha %>
+</p>
+
+<p>
+  <strong>Saida manha:</strong>
+  <%= @ponto.saida_manha %>
+</p>
+
+<p>
+  <strong>Entrada tarde:</strong>
+  <%= @ponto.entrada_tarde %>
+</p>
+
+<p>
+  <strong>Saida tarde:</strong>
+  <%= @ponto.saida_tarde %>
+</p>
+
+<%= link_to 'Edit', edit_ponto_path(@ponto) %> |
+<%= link_to 'Back', pontos_path %>

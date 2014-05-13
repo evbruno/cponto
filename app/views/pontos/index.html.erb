@@ -1,0 +1,37 @@
+<h1>Listing pontos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ano</th>
+      <th>Mes</th>
+      <th>Entrada manha</th>
+      <th>Saida manha</th>
+      <th>Entrada tarde</th>
+      <th>Saida tarde</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pontos.each do |ponto| %>
+      <tr>
+        <td><%= ponto.ano %></td>
+        <td><%= ponto.mes %></td>
+        <td><%= ponto.entrada_manha %></td>
+        <td><%= ponto.saida_manha %></td>
+        <td><%= ponto.entrada_tarde %></td>
+        <td><%= ponto.saida_tarde %></td>
+        <td><%= link_to 'Show', ponto %></td>
+        <td><%= link_to 'Edit', edit_ponto_path(ponto) %></td>
+        <td><%= link_to 'Destroy', ponto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ponto', new_ponto_path %>

@@ -1,0 +1,23 @@
+<h1>CPONTO draft</h1>
+
+<table>
+	<tr>
+		<th>Dia</th>
+		<th>Entrada m</th>
+		<th>Saida m</th>
+		<th>Entrada t</th>
+		<th>Saida t</th>
+	</tr>
+	<tbody>
+	<%- for dia in @dias do %>
+	<tr>
+		<td><%= dia.dia.day %></td>
+		<td><%= dia.entrada_manha %></td>
+		<td><%= dia.saida_manha %></td>
+		<td><%= dia.entrada_tarde %></td>
+		<td><%= dia.saida_tarde %></td>
+	</td>
+	<%- end %>
+	</tbody>
+</table>
+

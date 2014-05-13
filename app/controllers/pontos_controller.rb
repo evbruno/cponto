@@ -1,5 +1,7 @@
 
 class PontosController < ApplicationController
+
+	before_action :set_locale
 	
 	def hoje
 		hoje = Date.today
@@ -15,6 +17,12 @@ class PontosController < ApplicationController
 	end
 
 	private
+
+		def set_locale
+			logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+  			I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  			logger.debug "* Locale set to '#{I18n.locale}'"
+		end
 
 		def desenha_ponto
 			@dias = Ponto.build(Ponto.new(ano: @ano, mes: @mes))

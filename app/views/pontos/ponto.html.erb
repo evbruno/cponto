@@ -5,7 +5,7 @@
 //
 <%= link_to('Próximo mês', calcula_ponto_url(@ano_prox, @mes_prox)) %>
 
-<table>
+<table border=1>
 	<tr>
 		<th>Dia</th>
 		<th>Entrada m</th>
@@ -18,7 +18,7 @@
 	<tr>
 		<td><%= dia.dia.day %></td>
 		<%- if dia.fim_de_semana? %>
-			<td colspan="4">f.d.s.</td>
+			<td colspan="4"><%=t('date.weekend')%></td>
 		<%- else %>
 			<td><%= dia.entrada_manha %></td>
 			<td><%= dia.saida_manha %></td>

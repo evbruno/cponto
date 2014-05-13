@@ -1,6 +1,7 @@
 Cponto2::Application.routes.draw do
   	resources :pontos
   	root 'pontos#hoje'
+  	get '/:ano/:mes', to: 'pontos#calcula', as: 'calcula_ponto'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

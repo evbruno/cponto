@@ -1,3 +1,5 @@
+require 'date'
+
 class Dia
 	attr_reader :dia, :entrada_manha, :saida_manha, :entrada_tarde, :saida_tarde
 	
@@ -7,6 +9,10 @@ class Dia
 		@saida_manha = saida_manha
 		@entrada_tarde = entrada_tarde
 		@saida_tarde = saida_tarde
+	end
+
+	def fim_de_semana?
+		@dia.sunday? or @dia.saturday?
 	end
 
 end

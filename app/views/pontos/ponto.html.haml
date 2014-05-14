@@ -1,0 +1,30 @@
+%section.content
+
+	%h1 Cartão ponto #2
+	%h2= "#{@ano} / #{t('date.month_names')[@mes]}"
+
+	.header-link
+		=link_to('Mês anterior', calcula_ponto_url(@ano_ant, @mes_ant))
+		='//'
+		=link_to('Próximo mês', calcula_ponto_url(@ano_prox, @mes_prox))
+
+	%table
+		%tr
+			%th Dia
+			%th _
+			%th Entrada manhã
+			%th Saída manhã
+			%th Entrada tarde
+			%th Saída tarde
+		%tbody
+		-for dia in  @dias do
+			%tr
+				%td= dia.dia.day
+				%td= t('date.abbr_day_names')[dia.dia.wday]
+				- if dia.fim_de_semana?
+					%td{colspan: 4, class: 'weekend'}= t('date.weekend')
+				- else
+					%td= dia.entrada_manha
+					%td= dia.saida_manha
+					%td= dia.entrada_tarde
+					%td= dia.saida_tarde

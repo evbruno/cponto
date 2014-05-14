@@ -1,3 +1,58 @@
 // Place all the styles related to the Pontos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$border-color: #000;
+
+body {
+  font: 100% $font-stack;
+  background-color: $primary-color;
+  color: $primary-color;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	border-collapse: collapse;
+	text-align: center;
+	border-bottom: 1px solid $border-color;
+}
+
+.content {
+	border: 2px solid #000;
+	width: 700px;
+	margin: auto;
+	background-color: #fff;
+	padding: 5px;
+	text-align: center;
+}
+
+.header-link {
+	padding: 10px;
+	margin: 10px;
+	border: 1px dashed #eaeaea;
+}
+
+a {
+  	color: #000;
+	padding: 3px;
+	&:hover {
+		color: #fff;
+		background-color: #000;
+	}
+}
+
+.weekend {
+	background-color: #eaeaea;
+}

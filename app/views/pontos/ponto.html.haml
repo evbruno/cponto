@@ -1,6 +1,6 @@
 %section.content
 
-	%h1 Cartão ponto
+	%h1= t 'ponto.titulo'
 
 	%h2= "#{@ano} / #{t('date.month_names')[@mes]}"
 
@@ -38,5 +38,8 @@
 					%td= dia.saida_tarde
 
 .footer
-	=link_to(image_tag('flag_uk.png'), calcula_ponto_url(@ano, @mes, locale: 'en'))
-	=link_to(image_tag('flag_pt.png'), calcula_ponto_url(@ano, @mes, locale: 'pt'))
+	-if embromation?
+		%span{class: 'embromation'} embromation-mode:  <strong>ON</strong>
+
+	-for loc in I18n.available_locales.shuffle
+		=link_to(image_tag("flag_#{loc}.png"), calcula_ponto_url(@ano, @mes, locale: loc))

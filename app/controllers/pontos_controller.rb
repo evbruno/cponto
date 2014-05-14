@@ -22,6 +22,11 @@ class PontosController < ApplicationController
 		end
 		helper_method :mes_atual?
 
+		def embromation?
+			I18n.locale != :pt
+		end
+		helper_method :embromation?
+
 		def set_hoje
 			@hoje = Date.today
 		end
@@ -29,14 +34,11 @@ class PontosController < ApplicationController
 		def set_locale
 			#logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
   			#I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-  			#logger.debug "* Locale set to '#{I18n.locale}'"
-  			locale = params[:locale]
 
-  			if ['en', 'pt'].include? locale
-  				I18n.locale = locale
-  			else
-  				I18n.locale = 'pt'
-  			end
+  			locale = params[:locale].to_sym
+			I18n.locale = I18n.available_locales.include?(locale) ? locale : :pt
+
+  			logger.debug "* Locale set to '#{I18n.locale}'"
 		end
 
 		def desenha_ponto

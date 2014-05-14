@@ -1,0 +1,17 @@
+de:
+
+  date:
+      weekend: 'Prost !'
+      abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+      month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+
+  ponto:
+    titulo: Timecard
+    dia: Tag
+    entrada_manha: Vor dem Frühstück 
+    saida_manha: Mittagessen !!
+    entrada_tarde: <Counter-strike/>
+    saida_tarde: Fußballspiel
+    mes_anterior: '< Vorheriger Monat '
+    mes_proximo: 'Im nächsten Monat >'
+    mes_atual: 'Aktueller Monat'

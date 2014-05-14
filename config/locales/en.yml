@@ -20,10 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+
   date:
       weekend: 'hell yeah!'
+
   ponto:
+    titulo: Timecard
     dia: Day
     entrada_manha: Before breakfast
     saida_manha: Lunch !!

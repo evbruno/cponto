@@ -1,0 +1,17 @@
+ru:
+
+  date:
+    weekend: 'Ваше здоровье'
+    abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+    month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
+
+  ponto:
+    titulo: Timecard
+    dia: день
+    entrada_manha: Перед завтраком  
+    saida_manha: обед 
+    entrada_tarde: <Counter-strike/>
+    saida_tarde: Счастливый час
+    mes_anterior: '< Предыдущий месяц'
+    mes_proximo: 'следующий месяц >'
+    mes_atual: 'текущий месяц'

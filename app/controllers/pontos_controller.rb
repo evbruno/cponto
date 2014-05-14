@@ -34,10 +34,9 @@ class PontosController < ApplicationController
 		def set_locale
 			#logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
   			#I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-
-  			locale = params[:locale].to_sym
+  			
+  			locale = (params[:locale] || 'pt').to_sym
 			I18n.locale = I18n.available_locales.include?(locale) ? locale : :pt
-
   			logger.debug "* Locale set to '#{I18n.locale}'"
 		end
 

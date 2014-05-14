@@ -5,14 +5,14 @@
 	%h2= "#{@ano} / #{t('date.month_names')[@mes]}"
 
 	.header-link
-		=link_to(t('ponto.mes_anterior'), calcula_ponto_url(@ano_ant, @mes_ant, locale: I18n.locale))
+		=link_to(t('ponto.mes_anterior'), calcula_ponto_url(@ano_ant, @mes_ant))
 		='|'
 		-if mes_atual?
 			=t('ponto.mes_atual')
 		-else
-			=link_to(t('ponto.mes_atual'), root_url(locale: I18n.locale))
+			=link_to(t('ponto.mes_atual'), root_url)
 		='|'
-		=link_to(t('ponto.mes_proximo'), calcula_ponto_url(@ano_prox, @mes_prox, locale: I18n.locale))
+		=link_to(t('ponto.mes_proximo'), calcula_ponto_url(@ano_prox, @mes_prox))
 
 	%table
 		%tr
@@ -39,7 +39,13 @@
 
 .footer
 	-if embromation?
-		%span{class: 'embromation'} embromation-mode:  <strong>ON</strong>
+		%span{class: 'embromation-on'} embromation-mode:  <strong>ON</strong>
+	-else
+		%span{class: 'embromation-off'} embromation-mode:  <strong>OFF</strong>
 
 	-for loc in I18n.available_locales.shuffle
-		=link_to(image_tag("flag_#{loc}.png"), calcula_ponto_url(@ano, @mes, locale: loc))
+		-if I18n.locale == loc
+			=image_tag("flag_#{loc}.png")
+		-else
+			=link_to(image_tag("flag_#{loc}.png"), atualiza_locale_url(loc), data: { confirm: t('ponto.trocar_locale', locale: loc) }, method: 'post')
+

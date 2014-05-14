@@ -15,6 +15,20 @@ class PontosController < ApplicationController
 		desenha_ponto
 	end
 
+	def atualiza_locale
+		locale = params[:locale].to_sym
+		locale = I18n.available_locales.include?(locale) ? locale : :pt
+
+		session[:my_locale] = locale
+		logger.debug "* Locale updated to '#{I18n.locale}'"
+
+		if request.env['HTTP_REFERER'] =~ /.*\/(\d{4})\/(\d{1,2})$/
+			redirect_to calcula_ponto_url($1, $2)
+		else
+			redirect_to root_url
+		end
+	end
+
 	private
 
 		def mes_atual?
@@ -35,8 +49,9 @@ class PontosController < ApplicationController
 			#logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
   			#I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   			
-  			locale = (params[:locale] || 'pt').to_sym
+  			locale = (session[:my_locale] || 'pt').to_sym
 			I18n.locale = I18n.available_locales.include?(locale) ? locale : :pt
+
   			logger.debug "* Locale set to '#{I18n.locale}'"
 		end
 

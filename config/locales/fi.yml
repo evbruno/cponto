@@ -14,3 +14,4 @@ fi:
     mes_anterior: '< Edellinen kuukausi  '
     mes_proximo: 'ensi kuussa >'
     mes_atual: 'Kuluva kuukausi'
+    trocar_locale: 'Haluatko vaihdettava kieli Suomi?'

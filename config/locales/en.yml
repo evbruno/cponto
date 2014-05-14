@@ -34,3 +34,4 @@ en:
     mes_anterior: '< Previous month'
     mes_proximo: 'Next month >'
     mes_atual: 'Current month'
+    trocar_locale: 'Do you wanna change the locale to English?'

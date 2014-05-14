@@ -15,3 +15,4 @@ de:
     mes_anterior: '< Vorheriger Monat '
     mes_proximo: 'Im nächsten Monat >'
     mes_atual: 'Aktueller Monat'
+    trocar_locale: 'Sie ändern das Gebietsschema auf Deutsch will?'

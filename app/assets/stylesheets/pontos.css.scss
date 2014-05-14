@@ -9,10 +9,9 @@ $border-diff: 1px dashed #eaeaea;
 
 body {
   font: 100% $font-stack;
-  background-color: $primary-color;
-  color: $primary-color;
   margin: 0;
   padding: 0;
+  background: $primary-color asset-data-url('timecard.png') no-repeat left center;
 }
 
 table {
@@ -52,10 +51,32 @@ td {
 	text-align: right;
 }
 
-.footer .embromation {
-	font-style: italic;
+.footer .embromation-on {
 	font-size: 75%;
 	color: #aaa;
+	border: 1px solid #0E0E0E;
+	padding: 4px;
+	background-color: #000;
+}
+
+.footer .embromation-off {
+	font-size: 75%;
+	color: #aaa;
+	border: 1px solid #0E0E0E;
+	padding: 4px;
+	background-color: #000;
+}
+
+.footer .embromation-off strong {
+	background-color: #464646;
+	padding: 2px;
+	color: #6B6B6B;
+}
+
+.footer .embromation-on strong {
+	background-color: rgb(85, 105, 81);
+	padding: 2px;
+	color: #fff;
 }
 
 .header-link {

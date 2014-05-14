@@ -1,4 +1,13 @@
 pt:
+  ponto:
+    dia: Dia
+    entrada_manha: Entrada manhã
+    saida_manha: Saída manhã
+    entrada_tarde: Entrada tarde
+    saida_tarde: Saída tarde
+    mes_anterior: '< Mês anterior'
+    mes_proximo: 'Próximo mês >'
+    mes_atual: 'Mês atual'
   date:
       weekend: 'f.d.s.'
       formats:

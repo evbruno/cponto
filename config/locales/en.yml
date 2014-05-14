@@ -22,4 +22,13 @@
 en:
   hello: "Hello world"
   date:
-      weekend: 'weekend'
+      weekend: 'hell yeah!'
+  ponto:
+    dia: Day
+    entrada_manha: Before breakfast
+    saida_manha: Lunch !!
+    entrada_tarde: <Counter-strike/>
+    saida_tarde: Happy hour
+    mes_anterior: '< Previous month'
+    mes_proximo: 'Next month >'
+    mes_atual: 'Current month'

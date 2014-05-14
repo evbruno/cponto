@@ -15,4 +15,12 @@ class Dia
 		@dia.sunday? or @dia.saturday?
 	end
 
+	def holiday
+		@holiday ||= Holidays.on(@dia, :br).first
+	end
+
+	def holiday?
+		not holiday.nil?
+	end
+
 end

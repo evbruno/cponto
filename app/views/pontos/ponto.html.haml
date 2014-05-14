@@ -1,21 +1,27 @@
 %section.content
 
 	%h1 Cartão ponto
+
 	%h2= "#{@ano} / #{t('date.month_names')[@mes]}"
 
 	.header-link
-		=link_to('Mês anterior', calcula_ponto_url(@ano_ant, @mes_ant))
-		='//'
-		=link_to('Próximo mês', calcula_ponto_url(@ano_prox, @mes_prox))
+		=link_to(t('ponto.mes_anterior'), calcula_ponto_url(@ano_ant, @mes_ant, locale: I18n.locale))
+		='|'
+		-if mes_atual?
+			=t('ponto.mes_atual')
+		-else
+			=link_to(t('ponto.mes_atual'), root_url(locale: I18n.locale))
+		='|'
+		=link_to(t('ponto.mes_proximo'), calcula_ponto_url(@ano_prox, @mes_prox, locale: I18n.locale))
 
 	%table
 		%tr
-			%th Dia
+			%th= t 'ponto.dia'
 			%th _
-			%th Entrada manhã
-			%th Saída manhã
-			%th Entrada tarde
-			%th Saída tarde
+			%th{class:'horario'}= t 'ponto.entrada_manha'
+			%th{class:'horario'}= t 'ponto.saida_manha'
+			%th{class:'horario'}= t 'ponto.entrada_tarde'
+			%th{class:'horario'}= t 'ponto.saida_tarde'
 		%tbody
 		-for dia in  @dias do
 			%tr
@@ -23,8 +29,14 @@
 				%td= t('date.abbr_day_names')[dia.dia.wday]
 				- if dia.fim_de_semana?
 					%td{colspan: 4, class: 'weekend'}= t('date.weekend')
+				- elsif dia.holiday?
+					%td{colspan: 4, class: 'holiday'}= dia.holiday[:name]
 				- else
 					%td= dia.entrada_manha
 					%td= dia.saida_manha
 					%td= dia.entrada_tarde
 					%td= dia.saida_tarde
+
+.footer
+	=link_to(image_tag('flag_uk.png'), calcula_ponto_url(@ano, @mes, locale: 'en'))
+	=link_to(image_tag('flag_pt.png'), calcula_ponto_url(@ano, @mes, locale: 'pt'))

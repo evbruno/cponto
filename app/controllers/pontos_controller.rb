@@ -1,12 +1,11 @@
 
 class PontosController < ApplicationController
 
-	before_action :set_locale
+	before_action :set_hoje, :set_locale
 	
 	def hoje
-		hoje = Date.today
-		@ano = hoje.year
-		@mes = hoje.month
+		@ano = @hoje.year
+		@mes = @hoje.month
 		desenha_ponto
 	end
 
@@ -18,10 +17,26 @@ class PontosController < ApplicationController
 
 	private
 
+		def mes_atual?
+			request.path == '/' || ( @ano == @hoje.year && @mes == @hoje.month)
+		end
+		helper_method :mes_atual?
+
+		def set_hoje
+			@hoje = Date.today
+		end
+
 		def set_locale
-			logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-  			I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-  			logger.debug "* Locale set to '#{I18n.locale}'"
+			#logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+  			#I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  			#logger.debug "* Locale set to '#{I18n.locale}'"
+  			locale = params[:locale]
+
+  			if ['en', 'pt'].include? locale
+  				I18n.locale = locale
+  			else
+  				I18n.locale = 'pt'
+  			end
 		end
 
 		def desenha_ponto

@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$font-stack:    Helvetica, sans-serif;
+$font-stack:  Helvetica, sans-serif;
 $primary-color: #333;
 $border-color: #000;
+$border-diff: 1px dashed #eaeaea;
 
 body {
   font: 100% $font-stack;
@@ -23,25 +24,38 @@ th {
 	text-align: center;
 }
 
+th.horario {
+	width: 20%;
+}
+
 td {
 	border-collapse: collapse;
 	text-align: center;
 	border-bottom: 1px solid $border-color;
+	border-right: 1px solid $border-color;
 }
 
 .content {
 	border: 2px solid #000;
-	width: 700px;
+	width: 740px;
 	margin: auto;
 	background-color: #fff;
 	padding: 5px;
 	text-align: center;
 }
 
+.footer {
+	border: 2px solid $primary-color;
+	width: 740px;
+	margin: auto;
+	padding: 5px;
+	text-align: right;
+}
+
 .header-link {
 	padding: 10px;
 	margin: 10px;
-	border: 1px dashed #eaeaea;
+	border: $border-diff;
 }
 
 a {
@@ -55,4 +69,19 @@ a {
 
 .weekend {
 	background-color: #eaeaea;
+	font-weight: bold;
+}
+
+.holiday {
+	background-color: #FFDCB8;
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 170%;
+}
+
+h2 {
+	font-size: 140%;
+	border: $border-diff;
 }

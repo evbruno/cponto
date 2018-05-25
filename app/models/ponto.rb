@@ -7,8 +7,8 @@ class Ponto < ActiveRecord::Base
 			dias << Dia.new(
 				Date.new(ponto.ano, ponto.mes, dia_idx),
 				ponto.entrada_manha >> next_rand(5),
-				ponto.saida_manha >> next_rand(6),
-				ponto.entrada_tarde >> next_rand(6),
+				ponto.saida_manha >> next_rand(5),
+				ponto.entrada_tarde >> next_rand(5),
 				ponto.saida_tarde >> next_rand(5)
 			)
 		end

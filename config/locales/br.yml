@@ -1,4 +1,4 @@
-pt:
+br:
 
   date:
       weekend: 'f.d.s.'
@@ -15,4 +15,4 @@ pt:
     mes_anterior: '< Mês anterior'
     mes_proximo: 'Próximo mês >'
     mes_atual: 'Mês atual'
-    trocar_locale: ' Deseja trocar o locale para Português ?'
+    trocar_locale: ' Deseja trocar o locale para Português hue hue?'

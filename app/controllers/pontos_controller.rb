@@ -1,7 +1,7 @@
 
 class PontosController < ApplicationController
 
-	before_action :set_hoje, :set_locale
+	before_action :set_hoje, :set_locale, except: [ :atualiza_locale ]
 	
 	def hoje
 		@ano = @hoje.year
@@ -17,10 +17,10 @@ class PontosController < ApplicationController
 
 	def atualiza_locale
 		locale = params[:locale].to_sym
-		locale = I18n.available_locales.include?(locale) ? locale : :pt
+		locale = I18n.available_locales.include?(locale) ? locale : :br
 
 		session[:my_locale] = locale
-		logger.debug "* Locale updated to '#{I18n.locale}'"
+		logger.debug "* Locale updated to '#{@locale}'"
 
 		if request.env['HTTP_REFERER'] =~ /.*\/(\d{4})\/(\d{1,2})$/
 			redirect_to calcula_ponto_url($1, $2)
@@ -37,25 +37,26 @@ class PontosController < ApplicationController
 		helper_method :mes_atual?
 
 		def embromation?
-			I18n.locale != :pt
+			@locale != :br
 		end
 		helper_method :embromation?
+
+		def current_locale
+			@locale
+		end
+		helper_method :current_locale
 
 		def set_hoje
 			@hoje = Date.today
 		end
 
 		def set_locale
-			#logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-  			#I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-  			
-  			locale = (session[:my_locale] || 'pt').to_sym
-			I18n.locale = I18n.available_locales.include?(locale) ? locale : :pt
-
-  			logger.debug "* Locale set to '#{I18n.locale}'"
+			@locale = (session[:my_locale] || 'br').to_sym
+			logger.debug "* Locale set to '#{@locale}'"
 		end
 
 		def desenha_ponto
+			logger.debug "ano=#{@ano}, mes=#{@mes}"
 			@dias = Ponto.build(Ponto.new(ano: @ano, mes: @mes))
 			calcula_paginacao
 				

@@ -15,12 +15,20 @@ class Dia
 		@dia.sunday? or @dia.saturday?
 	end
 
-	def holiday
-		@holiday ||= Holidays.on(@dia, :br).first
+	def holiday(region = :br)
+		@holiday ||= Holidays.on(@dia, norm_region(region)).first
 	end
 
-	def holiday?
-		not holiday.nil?
+	def holiday?(region = :br)
+		not holiday(norm_region(region)).nil?
+	end
+
+	private
+
+	def norm_region(r)
+		return :us if r == :en
+		return :br if r.nil?
+		r
 	end
 
 end

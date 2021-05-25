@@ -27,10 +27,12 @@
 			%tr
 				%td= dia.dia.day
 				%td= t('date.abbr_day_names')[dia.dia.wday]
-				- if dia.fim_de_semana?
+				- if dia.holiday?(@locale) and dia.fim_de_semana?
+					%td{colspan: 4, class: 'holiday'}= dia.holiday(@locale)[:name]
+				- elsif dia.fim_de_semana?
 					%td{colspan: 4, class: 'weekend'}= t('date.weekend')
-				- elsif dia.holiday?
-					%td{colspan: 4, class: 'holiday'}= dia.holiday[:name]
+				- elsif dia.holiday?(@locale)
+					%td{colspan: 4, class: 'holiday'}= dia.holiday(@locale)[:name]
 				- else
 					%td= dia.entrada_manha
 					%td= dia.saida_manha
@@ -44,7 +46,7 @@
 		%span{class: 'embromation-off'} embromation-mode:  <strong>OFF</strong>
 
 	-for loc in I18n.available_locales.shuffle
-		-if I18n.locale == loc
+		-if current_locale == loc
 			=image_tag("flag_#{loc}.png")
 		-else
 			=link_to(image_tag("flag_#{loc}.png"), atualiza_locale_url(loc), data: { confirm: t('ponto.trocar_locale', locale: loc) }, method: 'post')

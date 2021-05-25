@@ -2,15 +2,22 @@
 development: &dev
   adapter: postgresql
   encoding: utf8
+  pool: 1
+  database: cponto
+  username: cponto
+  password: cponto
+  host: localhost
+  port: 5432
+
+production: 
+  adapter: postgresql
+  encoding: utf8
   pool: 5
   database: <%= ENV['CPONTO_DB_NAME']  %>
   username: <%= ENV['CPONTO_DB_USER'] %>
   password: <%= ENV['CPONTO_DB_PASS'] %>
   host: <%= ENV['CPONTO_DB_HOST'] %>
   port: <%= ENV['CPONTO_DB_PORT'] %>
-
-production: 
-  <<: *dev
 
 test: 
   <<: *dev

@@ -1,4 +1,4 @@
-class CreatePontos < ActiveRecord::Migration
+class CreatePontos < ActiveRecord::Migration[4.2]
   def change
     create_table :pontos do |t|
       t.integer :ano
